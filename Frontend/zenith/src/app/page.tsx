@@ -1,5 +1,5 @@
+import FundPage from "@/components/Fund";
 import Navbar from "../components/Navbar";
-
 import '@solana/wallet-adapter-react-ui/styles.css';
 
 export default function Home() {
@@ -7,6 +7,7 @@ export default function Home() {
     <div className="">
       
      <Navbar/>
+     <FundPage/>
     </div>
   );
 }
