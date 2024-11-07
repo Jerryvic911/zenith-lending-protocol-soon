@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar";
 import '@solana/wallet-adapter-react-ui/styles.css';
 import WithdrawPage from "@/components/Withdraw";
 import BorrowPage from "@/components/Borrow";
+import RepaymentPage from "@/components/Repayment";
 
 export default function Home() {
   return (
@@ -12,6 +13,7 @@ export default function Home() {
      <FundPage/>
      <WithdrawPage/>
      <BorrowPage/>
+     <RepaymentPage/>
     </div>
   );
 }

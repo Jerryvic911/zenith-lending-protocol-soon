@@ -1,18 +1,16 @@
 'use client'
-
 import * as React from 'react';
 import { useConnection, useWallet } from '@solana/wallet-adapter-react';
-import { LAMPORTS_PER_SOL, Transaction, SystemProgram, PublicKey } from '@solana/web3.js';
+import { LAMPORTS_PER_SOL, Transaction, SystemProgram } from '@solana/web3.js';
 import Link from 'next/link';
 
 export default function BorrowPage() {
   const { connection } = useConnection();
   const { publicKey, sendTransaction } = useWallet();
   const [amount, setAmount] = React.useState('');
-  const [recipientAddress, setRecipientAddress] = React.useState('');
   const [balance, setBalance] = React.useState(0);
   const [borrowedAmount, setBorrowedAmount] = React.useState(0);
-  const maxBorrowRatio = 1.5; // Users can borrow up to 50% of their balance
+  const maxBorrowRatio = 0.5; // Users can borrow up to 50% of their balance
 
   React.useEffect(() => {
     const savedBalance = localStorage.getItem('walletBalance');
@@ -38,19 +36,10 @@ export default function BorrowPage() {
     }
 
     try {
-      // Validate recipient address
-      let recipientPublicKey: PublicKey;
-      try {
-        recipientPublicKey = new PublicKey(recipientAddress);
-      } catch  {
-        alert('Invalid recipient address');
-        return;
-      }
-
       const transaction = new Transaction().add(
         SystemProgram.transfer({
           fromPubkey: publicKey,
-          toPubkey: recipientPublicKey,
+          toPubkey: publicKey, // Sending to the same wallet for demonstration
           lamports: LAMPORTS_PER_SOL * borrowAmount
         })
       );
@@ -62,9 +51,8 @@ export default function BorrowPage() {
       setBorrowedAmount(newBorrowedAmount);
       localStorage.setItem('borrowedAmount', newBorrowedAmount.toString());
       
-      alert(`Borrow successful! ${borrowAmount} SOL sent to ${recipientAddress}`);
+      alert(`Borrow successful! You've borrowed ${borrowAmount} SOL`);
       setAmount('');
-      setRecipientAddress('');
     } catch (error) {
       console.error('Error:', error);
       alert(`Borrow failed: ${error}`);
@@ -77,7 +65,7 @@ export default function BorrowPage() {
       <p className="mb-2">Current Balance: {balance} SOL</p>
       <p className="mb-4">Total Borrowed: {borrowedAmount} SOL</p>
       <p className="mb-4 font-semibold">
-        Available to Borrow: {Math.max(balance * maxBorrowRatio - borrowedAmount, 0.9).toFixed(2)} SOL
+        Available to Borrow: {Math.max(balance * maxBorrowRatio - borrowedAmount, 100).toFixed(2)} SOL
       </p>
       <form onSubmit={handleBorrow}>
         <div className="mb-4">
@@ -86,20 +74,9 @@ export default function BorrowPage() {
             type="number"
             id="amount"
             className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-            step="0.100000001"
+            step="0.000000001"
             value={amount}
             onChange={(e) => setAmount(e.target.value)}
-            required
-          />
-        </div>
-        <div className="mb-4">
-          <label htmlFor="recipient" className="block text-sm font-medium text-gray-700">Recipient Wallet Address</label>
-          <input
-            type="text"
-            id="recipient"
-            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-            value={recipientAddress}
-            onChange={(e) => setRecipientAddress(e.target.value)}
             required
           />
         </div>
@@ -107,10 +84,7 @@ export default function BorrowPage() {
           <button
             type="button"
             className="px-4 py-2 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-500"
-            onClick={() => {
-              setAmount('');
-              setRecipientAddress('');
-            }}
+            onClick={() => setAmount('')}
           >
             Cancel
           </button>
