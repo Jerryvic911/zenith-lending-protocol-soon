@@ -17,6 +17,15 @@ export default function DepositPage() {
     }
   }, []);
 
+  const [borrowedAmount, setBorrowedAmount] = React.useState(0);
+
+React.useEffect(() => {
+  const savedBorrowedAmount = localStorage.getItem('borrowedAmount');
+  if (savedBorrowedAmount) {
+    setBorrowedAmount(parseFloat(savedBorrowedAmount));
+  }
+}, []);
+
   const handleDeposit = async (event: React.FormEvent) => {
     event.preventDefault();
     if (!publicKey || !connection) return;
@@ -44,6 +53,14 @@ export default function DepositPage() {
       alert(`Deposit failed: ${error}`);
     }
   };
+
+  if (borrowedAmount > 0) {
+    const repayAmount = Math.min(parseFloat(amount), borrowedAmount);
+    const newBorrowedAmount = borrowedAmount - repayAmount;
+    setBorrowedAmount(newBorrowedAmount);
+    localStorage.setItem('borrowedAmount', newBorrowedAmount.toString());
+    alert(`Repaid ${repayAmount} SOL of borrowed amount.`);
+  }
 
   return (
     <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-lg shadow-md">
