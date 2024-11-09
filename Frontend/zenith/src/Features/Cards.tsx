@@ -1,6 +1,18 @@
 import React from 'react';
 
-const Cards = ({ cardData }) => {
+// Define the type for individual card data
+interface Card {
+  badge: string;
+  title: string;
+  description: string;
+}
+
+// Define the props type for the Cards component
+interface CardsProps {
+  cardData: Card[];
+}
+
+const Cards: React.FC<CardsProps> = ({ cardData }) => {
   return (
     <div className="relative flex items-center justify-center min-h-screen">
       {/* Central Circle */}
@@ -35,7 +47,7 @@ const Cards = ({ cardData }) => {
 };
 
 // Example usage
-const cardData = [
+const cardData: Card[] = [
   {
     badge: 'SECURITY',
     title: 'Robust Security',
@@ -62,6 +74,6 @@ const cardData = [
   },
 ];
 
-export default function App() {
+export default function Card() {
   return <Cards cardData={cardData} />;
 }

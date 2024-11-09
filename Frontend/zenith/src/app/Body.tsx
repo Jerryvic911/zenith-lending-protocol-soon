@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar";
 import Button from '@/components/Button';
 import Image from 'next/image';
 import Logo from "../image/logo.png"
+import Card from '@/Features/Cards';
 
 function Body() {
     return (
@@ -50,6 +51,10 @@ function Body() {
                         <p>Asset Security</p>
                     </li>
                 </ul>
+            </div>
+
+            <div>
+                <Card/>
             </div>
 
         </div>
