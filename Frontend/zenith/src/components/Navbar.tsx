@@ -1,53 +1,40 @@
-'use client'
-
+'use client';
 import * as React from 'react';
-import dynamic from 'next/dynamic';
-import { useConnection, useWallet } from '@solana/wallet-adapter-react';
+import Button from './Button';
+
 
 // Dynamically import wallet components
-const WalletMultiButtonDynamic = dynamic(
-  async () => (await import('@solana/wallet-adapter-react-ui')).WalletMultiButton,
-  { ssr: false }
-);
+
 
 function Navbar() {
-  return <InnerNavbar />;
-}
-
-function InnerNavbar() {
-  const { connection } = useConnection();
-  const { publicKey } = useWallet();
-
-  React.useEffect(() => {
-    const getInfo = async () => {
-      if (connection && publicKey) {
-        try {
-          console.log('Fetching account info for:', publicKey.toString());
-          const info = await connection.getAccountInfo(publicKey);
-          if (info) {
-            console.log('Account info:', info.data);
-          } else {
-            console.warn('Account info is null, wallet might not be connected properly.');
-          }
-        } catch (error) {
-          console.error('Error fetching account info:', error);
-        }
-      } else {
-        console.log('Connection or publicKey is not available.');
-      }
-    };
-    getInfo();
-  }, [connection, publicKey]);
-
   return (
-    <div className='flex justify-between items-center p-4 '>
-      <h1 className='text-xl font-bold'>Zenith Lending Protocol</h1>
-      <div className='flex items-center space-x-4'>
-       
-        <WalletMultiButtonDynamic />
+    <div className='flex justify-center pt-10'>
+      <div className='relative hidden border-[#1A1E3E] border-2 rounded-lg w-full max-w-[700px] h-[100px] md:flex items-center justify-center p-4'>
+        <div className=' hidden md:flex md:flex-row gap-5 justify-between w-full'>
+          <div className='flex  gap-12'>
+              <div>
+              <span className=' w-20 rounded-full'>
+              <svg className='bg-[#BF082E] w-16 rounded-full h-10' width="10" height="10"   xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path fill="#ffffff" d="M272.2 64.6l-51.1 51.1c-15.3 4.2-29.5 11.9-41.5 22.5L153 161.9C142.8 171 129.5 176 115.8 176L96 176l0 128c20.4 .6 39.8 8.9 54.3 23.4l35.6 35.6 7 7c0 0 0 0 0 0L219.9 397c6.2 6.2 16.4 6.2 22.6 0c1.7-1.7 3-3.7 3.7-5.8c2.8-7.7 9.3-13.5 17.3-15.3s16.4 .6 22.2 6.5L296.5 393c11.6 11.6 30.4 11.6 41.9 0c5.4-5.4 8.3-12.3 8.6-19.4c.4-8.8 5.6-16.6 13.6-20.4s17.3-3 24.4 2.1c9.4 6.7 22.5 5.8 30.9-2.6c9.4-9.4 9.4-24.6 0-33.9L340.1 243l-35.8 33c-27.3 25.2-69.2 25.6-97 .9c-31.7-28.2-32.4-77.4-1.6-106.5l70.1-66.2C303.2 78.4 339.4 64 377.1 64c36.1 0 71 13.3 97.9 37.2L505.1 128l38.9 0 40 0 40 0c8.8 0 16 7.2 16 16l0 208c0 17.7-14.3 32-32 32l-32 0c-11.8 0-22.2-6.4-27.7-16l-84.9 0c-3.4 6.7-7.9 13.1-13.5 18.7c-17.1 17.1-40.8 23.8-63 20.1c-3.6 7.3-8.5 14.1-14.6 20.2c-27.3 27.3-70 30-100.4 8.1c-25.1 20.8-62.5 19.5-86-4.1L159 404l-7-7-35.6-35.6c-5.5-5.5-12.7-8.7-20.4-9.3C96 369.7 81.6 384 64 384l-32 0c-17.7 0-32-14.3-32-32L0 144c0-8.8 7.2-16 16-16l40 0 40 0 19.8 0c2 0 3.9-.7 5.3-2l26.5-23.6C175.5 77.7 211.4 64 248.7 64L259 64c4.4 0 8.9 .2 13.2 .6zM544 320l0-144-48 0c-5.9 0-11.6-2.2-15.9-6.1l-36.9-32.8c-18.2-16.2-41.7-25.1-66.1-25.1c-25.4 0-49.8 9.7-68.3 27.1l-70.1 66.2c-10.3 9.8-10.1 26.3 .5 35.7c9.3 8.3 23.4 8.1 32.5-.3l71.9-66.4c9.7-9 24.9-8.4 33.9 1.4s8.4 24.9-1.4 33.9l-.8 .8 74.4 74.4c10 10 16.5 22.3 19.4 35.1l74.8 0zM64 336a16 16 0 1 0 -32 0 16 16 0 1 0 32 0zm528 16a16 16 0 1 0 0-32 16 16 0 1 0 0 32z"/></svg>
+               </span>
+              <h1 className='font-bold text-[#BF082E]  items-center  text-center'>
+             Zenith</h1>
+              </div>
+            <div className='flex gap-12 pt-5'>
+            <h1 className='font-bold text-center'>Strategies</h1>
+            <h1 className='font-bold text-center'>Documentation</h1>
+            <h1 className='font-bold text-center'>Market</h1>
+            </div>
+          </div>
+
+          <div className='space-x-4 mt-2'>
+         <Button/>
+          </div>
+        </div>
       </div>
     </div>
   );
 }
+
+
 
 export default Navbar;
