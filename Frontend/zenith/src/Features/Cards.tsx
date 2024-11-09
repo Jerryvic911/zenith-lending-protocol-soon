@@ -16,14 +16,14 @@ const Cards: React.FC<CardsProps> = ({ cardData }) => {
   return (
     <div className="relative flex items-center justify-center min-h-screen">
       {/* Central Circle */}
-      <div className="absolute w-40 h-40 bg-[#000329] rounded-full z-10"></div>
+      <div className="absolute hidden md:block w-40 h-40 bg-[#000329] rounded-full z-10"></div>
       
       {/* Card Grid */}
-      <div className="grid grid-cols-2 gap-6 p-8 max-w-4xl">
+      <div className="md:grid md:grid-cols-2 p-8 gap-6 max-w-4xl">
         {cardData.map((item, index) => (
           <div
             key={index}
-            className={`relative p-8 bg-[#1A1E3E] rounded-2xl shadow-lg transition-transform hover:scale-[1.02] ${index === 1 || index === 3 ? 'pl-12' : ''}`}
+            className={`relative mb-10 md:mb-0 p-8 bg-[#1A1E3E] rounded-2xl shadow-lg transition-transform hover:scale-[1.02] ${index === 1 || index === 3 ? 'pl-12' : ''}`}
           >
             {/* Badge */}
             <span className="inline-block px-3 py-1 text-sm font-medium text-[#FB23FF] bg-[#FB23FF33] rounded-full">
