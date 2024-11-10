@@ -23,7 +23,7 @@ function Body() {
                     </div>
                 </div>
 
-                <div className='w-full md:w-auto'>
+                <div className='w-full md:w-auto hidden md:block'>
                     <Image
                         src={Logo}
                         height={300}
