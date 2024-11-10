@@ -4,6 +4,7 @@ import Button from '@/components/Button';
 import Image from 'next/image';
 import Logo from "../image/logo.png";
 import Card from '@/Features/Cards';
+import Process from '@/Features/Process';
 
 function Body() {
     return (
@@ -54,8 +55,13 @@ function Body() {
                 </ul>
             </div>
 
-            <div>
+            <div className='pt-10'> 
+            <h1 className='ml-[4rem] relative top-10 font-[500] text-[20px] md:text-[22px]'>Why Choose Zennith?</h1>
                 <Card />
+            </div>
+
+            <div>
+                <Process/>
             </div>
         </div>
     )
