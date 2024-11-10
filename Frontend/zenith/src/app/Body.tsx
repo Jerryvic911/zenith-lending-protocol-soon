@@ -23,13 +23,13 @@ function Body() {
                     </div>
                 </div>
 
-                <div className='w-full md:w-auto hidden md:block'>
+                <div className='w-full md:w-auto hidden md:inline-block'>
                     <Image
                         src={Logo}
-                        height={300}
-                        width={300}
+                        height={400}
+                        width={400}
                         alt="Zennith"
-                        className='object-cover w-full h-auto' />
+                        className='object-cover w-[300px] h-auto' />
                 </div>
             </div>
 
