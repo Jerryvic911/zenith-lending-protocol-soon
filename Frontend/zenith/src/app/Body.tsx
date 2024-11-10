@@ -34,7 +34,7 @@ function Body() {
             </div>
 
             <div>
-                <ul className='md:flex grid grid-cols-2 md:flex-row md:ml-0 ml-16 items-center justify-center gap-10 capitalize'>
+                <ul className='md:flex grid grid-cols-2 md:flex-row md:ml-0 ml-11 items-center justify-center gap-10 capitalize'>
                     <li>
                         <h2 className="text-purple-500 text-2xl md:text-3xl">1 Million +</h2>
                         <p className="text-sm md:text-base">Transaction Processed</p>
