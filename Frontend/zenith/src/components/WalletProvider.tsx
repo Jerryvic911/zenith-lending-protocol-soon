@@ -4,7 +4,6 @@ import * as web3 from '@solana/web3.js';
 import * as walletAdapterReact from '@solana/wallet-adapter-react';
 import * as walletAdapterWallets from '@solana/wallet-adapter-wallets';
 import { WalletModalProvider } from '@solana/wallet-adapter-react-ui';
-
 // Import the CSS for the wallet adapter
 import '@solana/wallet-adapter-react-ui/styles.css';
 
