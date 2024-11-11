@@ -7,9 +7,9 @@ function Process() {
     return (
         <div>
             <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
-                <div className='flex flex-row items-start'>
-                    <div className='border-2 border-blue-800 w-[4px] h-[27rem] md:h-[18rem] mb-5 mt-3 md:mt-0'></div>
-                    <div className='mt-3'>
+                <div className='flex flex-row items-start md:ml-16 w-full'>
+                    <div className='border-2 border-blue-800 w-[4px] h-[21rem] md:h-[18rem] mb-5 mt-3 md:mt-0'></div>
+                    <div className='mt-3 pl-5'>
                         <h1 className='pb-3 ml-4 font-[400] text-[22px] leading-[24px]'>How it works</h1>
                         <div className='flex flex-row gap-4 pb-5'>
                             <h2 className='w-[45px] h-[45px] bg-[#dfd6d8] text-[#BF082E] font-[400] text-[20px] rounded-full pl-4 pt-2'>1.</h2>
@@ -34,11 +34,13 @@ function Process() {
                         height={400} // Adjust height for better mobile responsiveness
                         width={400} // Adjust width for better mobile responsiveness
                         alt="Zennith"
-                        className='object-cover w-full max-w-[400px] h-auto mt-3 md:mt-10'
+                        className='object-cover w-full md:max-w-[400px] h-auto mt-3 md:mt-10'
                     />
                 </div>
             </div>
-            <Button />
+           <div className='md:ml-16'>
+           <Button />
+           </div>
         </div>
     )
 }

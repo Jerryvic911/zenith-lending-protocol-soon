@@ -16,14 +16,14 @@ const Cards: React.FC<CardsProps> = ({ cardData }) => {
   return (
     <div className="relative flex items-center justify-center min-h-screen">
       {/* Central Circle */}
-      <div className="absolute hidden md:block w-40 h-40 bg-[#000329] rounded-full z-10"></div>
+      <div className="absolute hidden md:block w-40 h-40 ml-2 bg-[#000329] rounded-full z-10"></div>
 
       {/* Card Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 p-4 md:p-8 gap-8 max-w-4xl">
         {cardData.map((item, index) => (
           <div
             key={index}
-            className={`relative mb-8 md:mb-0 w-full max-w-[500px] h-[250px] p-6 bg-[#1A1E3E] rounded-2xl shadow-lg transition-transform hover:scale-[1.02] ${index % 2 === 0 ? 'md:mr-4' : ''}`}
+            className={`relative mb-8 md:mb-0 md:w-[550px] w-full max-w-[500px] h-[250px] p-6 bg-[#1A1E3E] rounded-2xl shadow-lg transition-transform hover:scale-[1.02] ${index % 2 === 0 ? ' md:relative md:right-24 ' : ''}  ${index % 2 === 1 ? 'md:relative pl-10 md:ml-1' : ''}`}
           >
             {/* Badge */}
             <span className="inline-block px-3 py-1 text-sm font-medium text-[blue] bg-blue-950 rounded-full">
@@ -31,7 +31,7 @@ const Cards: React.FC<CardsProps> = ({ cardData }) => {
             </span>
 
             {/* Title */}
-            <h2 className="mt-6 text-xl md:text-2xl font-semibold text-white">
+            <h2 className="mt-6 text-xl md:text-2xl font-semibold ">
               {item.title}
             </h2>
 

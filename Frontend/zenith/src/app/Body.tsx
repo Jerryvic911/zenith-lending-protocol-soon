@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Logo from "../image/logo.png";
 import Card from '@/Features/Cards';
 import Process from '@/Features/Process';
+import Liquidity from '@/Features/Liquidity';
 
 function Body() {
     return (
@@ -62,6 +63,10 @@ function Body() {
 
             <div>
                 <Process/>
+            </div>
+
+            <div>
+                <Liquidity/>
             </div>
         </div>
     )
