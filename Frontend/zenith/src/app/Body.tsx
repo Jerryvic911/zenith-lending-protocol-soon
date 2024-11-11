@@ -35,7 +35,7 @@ function Body() {
                 </div>
             </div>
 
-            <div>
+            <div >
                 <ul className='md:flex grid grid-cols-2 md:flex-row md:ml-0 ml-11 items-center justify-center gap-10 capitalize'>
                     <li>
                         <h2 className="text-purple-500 text-2xl md:text-3xl">1 Million +</h2>
@@ -56,12 +56,12 @@ function Body() {
                 </ul>
             </div>
 
-            <div className='pt-10'> 
+            <div className='pt-16 mb-16'> 
             <h1 className='ml-[4rem] relative top-10 font-[500] text-[20px] md:text-[22px]'>Why Choose Zennith?</h1>
                 <Card />
             </div>
 
-            <div>
+            <div className='mb-10'>
                 <Process/>
             </div>
 

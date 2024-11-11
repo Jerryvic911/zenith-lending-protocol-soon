@@ -8,7 +8,7 @@ function Process() {
         <div>
             <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
                 <div className='flex flex-row items-start md:ml-16 w-full'>
-                    <div className='border-2 border-blue-800 w-[4px] h-[21rem] md:h-[18rem] mb-5 mt-3 md:mt-0'></div>
+                    <div className='border-2 border-blue-800 w-[4px] h-[28rem] md:h-[18rem] mb-5 mt-3 md:mt-0'></div>
                     <div className='mt-3 pl-5'>
                         <h1 className='pb-3 ml-4 font-[400] text-[22px] leading-[24px]'>How it works</h1>
                         <div className='flex flex-row gap-4 pb-5'>

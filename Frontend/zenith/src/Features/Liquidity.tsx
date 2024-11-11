@@ -6,17 +6,17 @@ function Liquidity() {
   return (
     <div>
       <div>
-        <div className=' gap-4'>
+        <div className=' gap-8'>
           <div className='md:flex gap-20  flex flex-col md:flex-row md:justify-start'>
             <Image
               src={Coin}
               height={300} // Adjust height for better mobile responsiveness
               width={300} // Adjust width for better mobile responsiveness
               alt="Zennith"
-              className='object-contain relative top-10  w-full md:max-w-[340px] h-auto mt-5 md:relative md:top-14'
+              className='object-contain relative top-10 md:pl-5 w-full md:max-w-[340px] h-auto mt-5 md:relative md:top-14 md:left-16'
             />
 
-            <div className=' md:mt-36 md:w-[700px] mr-10 '>
+            <div className=' md:mt-36 md:w-[700px] md:ml-5 '>
               <h1 className='pb-3 font-[400] text-[22px] leading-[24px]'>Liquidity</h1>
              <div className='flex flex-row gap-6'>
              <div className='flex flex-col gap-4 pb-5 w-[400px] md:w-full'>
@@ -31,7 +31,7 @@ function Liquidity() {
                   vestibulum eu nisl.
                 </p>
               </div>
-              <div className='border-2 relative left-5 border-blue-800 w-[4px] h-[20rem] md:h-[16rem] mb-5 mt-3 md:mt-0'></div>
+              <div className='border-2 md:relative md:left-5 border-blue-800 w-[4px] h-[30rem] md:h-[16rem] mb-5  md:mt-0'></div>
 
              </div>
 
