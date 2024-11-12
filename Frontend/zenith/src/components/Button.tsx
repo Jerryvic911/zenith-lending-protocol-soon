@@ -4,9 +4,8 @@ import * as React from 'react'
 import { useConnection, useWallet } from '@solana/wallet-adapter-react'
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui'
 import '@solana/wallet-adapter-react-ui/styles.css'
-
-// Dynamically import wallet components
-
+import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
 function Button() {
   return <InnerNavbar />
@@ -14,7 +13,8 @@ function Button() {
 
 function InnerNavbar() {
   const { connection } = useConnection()
-  const { publicKey, wallet } = useWallet()
+  const { publicKey, wallet, connected } = useWallet()
+  const router = useRouter()
 
   React.useEffect(() => {
     const getInfo = async () => {
@@ -45,7 +45,7 @@ function InnerNavbar() {
         background-color: #dc2626 !important;
       }
       .wallet-adapter-button-trigger:not([disabled]):hover {
-        background-color: ##bf082e !important;
+        background-color: #bf082e !important;
       }
     `
     document.head.appendChild(style)
@@ -55,15 +55,30 @@ function InnerNavbar() {
     }
   }, [])
 
+  React.useEffect(() => {
+    if (connected) {
+      router.push('/deposit')
+    }
+  }, [connected, router])
+
+  const handleClick = (e: React.MouseEvent) => {
+    if (connected) {
+      e.preventDefault()
+    }
+  }
+
   return (
-    <div className="space-x-4 ">
-    <WalletMultiButton
-      className="custom-wallet-button"
-    >
-      {wallet ? (publicKey ? publicKey.toBase58().slice(0, 4) + '..' + publicKey.toBase58().slice(-4) : 'Connect') : 'Connect Wallet'}
-    </WalletMultiButton>
-  
-  </div>
+    <div className="space-x-4">
+      <Link href="/" passHref onClick={handleClick}>
+        <WalletMultiButton className="custom-wallet-button">
+          {wallet
+            ? publicKey
+              ? publicKey.toBase58().slice(0, 4) + '..' + publicKey.toBase58().slice(-4)
+              : 'Connect'
+            : 'Connect Wallet'}
+        </WalletMultiButton>
+      </Link>
+    </div>
   )
 }
 

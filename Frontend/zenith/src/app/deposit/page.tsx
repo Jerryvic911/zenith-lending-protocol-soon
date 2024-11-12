@@ -2,6 +2,7 @@
 import * as React from 'react';
 import { useConnection, useWallet } from '@solana/wallet-adapter-react';
 import { LAMPORTS_PER_SOL,  Transaction, SystemProgram } from '@solana/web3.js';
+import Navbar from '@/components/Navbar';
 
 
 export default function DepositPage() {
@@ -48,7 +49,9 @@ export default function DepositPage() {
   
 
   return (
-    <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-lg shadow-md">
+   <div>
+    <Navbar/>
+     <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-lg shadow-md">
       <h2 className="text-2xl font-bold mb-4">Deposit SOL</h2>
       <p className="mb-4">Current Balance: {balance} SOL</p>
       <form onSubmit={handleDeposit}>
@@ -82,5 +85,6 @@ export default function DepositPage() {
       </form>
    
     </div>
+   </div>
   );
 }

@@ -6,17 +6,26 @@ import Logo from "../image/logo.png";
 import Card from '@/Features/Cards';
 import Process from '@/Features/Process';
 import Liquidity from '@/Features/Liquidity';
+import Footer from '@/components/Footer';
+import Sidebar from '../components/Drawer';
+
 
 function Body() {
     return (
-        <div className="px-4 md:px-16">
+        <div className="px-4 md:px-16 ">
             <div>
                 <Navbar />
             </div>
 
             <div className='flex flex-col md:flex-row items-center justify-center gap-10 mb-11'>
                 <div className='w-full md:w-[517px] relative'>
+                    <div className='flex flex-row justify-between'>
                     <h1 className='text-[48px] md:text-[96px] font-bold'>Zennith</h1>
+                   <div className='inline-block pt-5 md:hidden'>
+                   <Sidebar/>
+                   </div>
+                    </div>
+                   
                     <p className='w-full md:w-[450px] leading-5 text-[16px] font-normal'>
                         The safest and most secure lending protocol designed for you. Dive into a world of Tokenization with no limitations.
                     </p>
@@ -67,6 +76,15 @@ function Body() {
 
             <div>
                 <Liquidity/>
+            </div>
+
+            <div>
+                <h1 className='text-[88px] md:text-[250px] text-[#191c3e] font-normal text-center mb-10'>Zennith</h1>
+            </div>
+
+            <div>
+                <div className=' border-[1px] border-[#1A1E3E]'></div>
+                <Footer/>
             </div>
         </div>
     )
